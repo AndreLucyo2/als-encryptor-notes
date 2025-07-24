@@ -91,6 +91,7 @@ npm install
 Compile o código TypeScript e gere os arquivos para o Obsidian:
 
 - `npm run build` — compila o plugin
+- `npm run buildRelease -- v1.0.0` — compila o uma release na Versoa da tag
 - `npm run lint` — verifica problemas
 
 Os arquivos compilados aparecerão na pasta `dist/`.
