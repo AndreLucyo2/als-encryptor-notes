@@ -111,7 +111,7 @@ Copie os arquivos da pasta `dist/` para a pasta de plugins do Obsidian.
 ### 📁 Estrutura esperada
 
 ```bash
-.obsidian/plugins/als-obsidian-secure-notes/
+.obsidian/plugins/als-encryptor-notes/
 │
 ├── main.ts
 ├── manifest.json
