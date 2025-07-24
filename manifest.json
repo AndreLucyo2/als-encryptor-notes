@@ -1,0 +1,12 @@
+{
+	"id": "als-encryptor-notes",
+	"name": "Encryptor Secure Notes",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Encrypts and decrypts notes from specific folder.",
+	"author": "Andre.Lucyo",
+	"authorUrl": "https://github.com/AndreLucyo2",
+	"fundingUrl": "https://ko-fi.com/andrelucyo",
+	"helpUrl": "https://github.com/AndreLucyo2/als-encryptor-notes",
+	"isDesktopOnly": false
+}
