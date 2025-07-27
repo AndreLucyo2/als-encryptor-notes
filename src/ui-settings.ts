@@ -31,30 +31,16 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 
 		// Bloco de alerta para o usuário (usando classes CSS e API DOM)
 		const warningBlock = containerEl.createDiv({ cls: "warning-block" });
-		const warningTitle = warningBlock.createSpan({ cls: "warning-block-title" });
-		warningTitle.setText(translation.attention);
+		warningBlock.createEl("span", { cls: "warning-block-title", text: translation.attention });
 		warningBlock.createEl("br");
-		const warningText = warningBlock.createSpan({ cls: "warning-block-text" });
-		warningText.setText(translation.warningBlock);
+		warningBlock.createEl("span", { cls: "warning-block-text", text: translation.warningBlock });
 
 		containerEl.createEl("h1", { text: translation.configTitle });
 		containerEl.createEl("p", { text: translation.configDesc });
 
-		// Bloco de instruções sobre criptografia de arquivos (com formatação)
+		// Bloco de instruções sobre criptografia de arquivos
 		const fileInfoBlock = containerEl.createDiv({ cls: "file-info-block" });
-		// Exemplo para português, ajuste para outros idiomas se necessário
-		if (translation.fileInfoBlock.includes("<b>")) {
-			const strong = fileInfoBlock.createEl("b");
-			strong.setText("Instruções:");
-			fileInfoBlock.createEl("br");
-			fileInfoBlock.appendText("Todas as notas no formato .md (Markdown) dentro da pasta informada e suas subpastas serão criptografadas.");
-			fileInfoBlock.createEl("br");
-			const warn = fileInfoBlock.createSpan();
-			warn.addClass("warning-block-text");
-			warn.setText("Arquivos de outros formatos não serão criptografados.");
-		} else {
-			fileInfoBlock.setText(translation.fileInfoBlock.replace(/<[^>]+>/g, ""));
-		}
+		fileInfoBlock.setText(translation.fileInfoBlock);
 
 		new Setting(containerEl)
 			.setName(translation.folderPath)
@@ -102,19 +88,10 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 		const lineBlock = containerEl.createEl("hr");
 		lineBlock.style.marginBottom = "1em";
 
-		// Info block (com formatação)
+		// Info block
 		const infoBlock = containerEl.createDiv({ cls: "file-info-block" });
 		infoBlock.style.marginBottom = "1em";
-		if (translation.infoBlock.includes("<h2>")) {
-			// Exemplo: <h2>Backup manual da senha por email (Opcional)</h2>O plugin utiliza ...<span style='color: #e09000'>Nunca compartilhe sua senha com terceiros.</span>
-			infoBlock.createEl("h2", { text: "Backup manual da senha por email (Opcional)" });
-			infoBlock.appendText("O plugin utiliza o recurso mailto: do seu sistema operacional para abrir o aplicativo de email padrão já com o destinatário, assunto e corpo preenchidos. O plugin tentará abrir seu cliente de email padrão, para confirmação e envio.");
-			infoBlock.createEl("br");
-			const warn = infoBlock.createSpan({ cls: "info-warning-text" });
-			warn.setText("Nunca compartilhe sua senha com terceiros.");
-		} else {
-			infoBlock.setText(translation.infoBlock.replace(/<[^>]+>/g, ""));
-		}
+		infoBlock.setText(translation.infoBlock);
 
 		new Setting(containerEl)
 			.setName(translation.backupEmail)
@@ -145,8 +122,8 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		// Footer block (com formatação)
+		// Footer block
 		const footerBlock = containerEl.createDiv({ cls: "footer-block" });
-		footerBlock.setText(translation.footer.replace(/<[^>]+>/g, ""));
+		footerBlock.setText(translation.footer);
 	}
 }

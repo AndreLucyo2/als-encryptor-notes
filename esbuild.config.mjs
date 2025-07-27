@@ -54,11 +54,11 @@ if (prod) {
 	// Copia o manifest.json
 	copyFileSync('manifest.json', join(outdir, 'manifest.json'));
 
-	// Copia o styles.css se existir
-	//copyFileSync('styles.css', join(outdir, 'styles.css'));
+	// Copia o style.css da pasta src para dist
+	copyFileSync('src/styles.css', join(outdir, 'style.css'));
 
 	process.exit(0);
-	
+
 } else {
 	await context.watch();
 }
