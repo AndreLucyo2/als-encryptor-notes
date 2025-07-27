@@ -29,11 +29,9 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 
 		containerEl.createEl("h1", { text: translation.title });
 
-		// Bloco de alerta para o usuário (usando classes CSS e API DOM)
+		// Bloco de alerta para o usuário (fundo amarelo claro)
 		const warningBlock = containerEl.createDiv({ cls: "warning-block" });
-		warningBlock.createEl("span", { cls: "warning-block-title", text: translation.attention });
-		warningBlock.createEl("br");
-		warningBlock.createEl("span", { cls: "warning-block-text", text: translation.warningBlock });
+		warningBlock.setText(`${translation.attention} ${translation.warningBlock}`);
 
 		containerEl.createEl("h1", { text: translation.configTitle });
 		containerEl.createEl("p", { text: translation.configDesc });

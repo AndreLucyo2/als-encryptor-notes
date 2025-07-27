@@ -55,7 +55,7 @@ if (prod) {
 	copyFileSync('manifest.json', join(outdir, 'manifest.json'));
 
 	// Copia o style.css da pasta src para dist
-	copyFileSync('src/styles.css', join(outdir, 'style.css'));
+copyFileSync('src/styles.css', join(outdir, 'styles.css'));
 
 	process.exit(0);
 

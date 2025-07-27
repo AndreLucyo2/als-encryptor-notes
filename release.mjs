@@ -8,7 +8,7 @@ if (!version) {
 	process.exit(1);
 }
 
-const filesToUpload = ['main.js', 'manifest.json', 'style.css'];
+const filesToUpload = ['main.js', 'manifest.json', 'styles.css'];
 
 // Verifica se os arquivos existem na pasta dist
 for (const file of filesToUpload) {

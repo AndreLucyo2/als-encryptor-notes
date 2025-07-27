@@ -1,9 +1,11 @@
+
 .warning-block {
-	background: #fff8c6;
-	border: 1px solid #e0b000;
-	padding: 1em;
-	margin-bottom: 1em;
-	border-radius: 6px;
+	background-color: #fff8c6 !important;
+	border: 1px solid #e0b000 !important;
+	padding: 1em !important;
+	margin-bottom: 1em !important;
+	border-radius: 6px !important;
+	color: #c00000 !important;
 }
 
 .warning-block-title {
@@ -16,7 +18,7 @@
 }
 
 .file-info-block {
-	background: #f7f7e0;
+	background-color: #f7f7e0;
 	color: #a08000;
 	padding: 0.7em;
 	margin: 0.5em 0 1em 0;
@@ -25,7 +27,7 @@
 }
 
 .footer-block {
-	background: #222;
+	background-color: #222;
 	color: #fff;
 	text-align: center;
 	padding: 1.5em 0 1em 0;
