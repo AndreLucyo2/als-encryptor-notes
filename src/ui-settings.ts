@@ -29,29 +29,32 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 
 		containerEl.createEl("h1", { text: translation.title });
 
-		// Bloco de alerta para o usuário
-		const warningBlock = document.createElement("div");
-		warningBlock.style.background = "#fff8c6";
-		warningBlock.style.border = "1px solid #e0b000";
-		warningBlock.style.padding = "1em";
-		warningBlock.style.marginBottom = "1em";
-		warningBlock.style.borderRadius = "6px";
-		warningBlock.innerHTML = `<span style='color:#c00000; font-weight:bold;'>${translation.attention}</span><br><span style='color:#c00000;'>${translation.warningBlock}</span>`;
-		containerEl.appendChild(warningBlock);
+		// Bloco de alerta para o usuário (usando classes CSS e API DOM)
+		const warningBlock = containerEl.createDiv({ cls: "warning-block" });
+		const warningTitle = warningBlock.createSpan({ cls: "warning-block-title" });
+		warningTitle.setText(translation.attention);
+		warningBlock.createEl("br");
+		const warningText = warningBlock.createSpan({ cls: "warning-block-text" });
+		warningText.setText(translation.warningBlock);
 
 		containerEl.createEl("h1", { text: translation.configTitle });
 		containerEl.createEl("p", { text: translation.configDesc });
 
-		// Bloco de instruções sobre criptografia de arquivos
-		const fileInfoBlock = document.createElement("div");
-		fileInfoBlock.style.background = "#f7f7e0";
-		fileInfoBlock.style.color = "#a08000";
-		fileInfoBlock.style.padding = "0.7em";
-		fileInfoBlock.style.margin = "0.5em 0 1em 0";
-		fileInfoBlock.style.borderRadius = "6px";
-		fileInfoBlock.style.fontSize = "0.98em";
-		fileInfoBlock.innerHTML = translation.fileInfoBlock;
-		containerEl.appendChild(fileInfoBlock);
+		// Bloco de instruções sobre criptografia de arquivos (com formatação)
+		const fileInfoBlock = containerEl.createDiv({ cls: "file-info-block" });
+		// Exemplo para português, ajuste para outros idiomas se necessário
+		if (translation.fileInfoBlock.includes("<b>")) {
+			const strong = fileInfoBlock.createEl("b");
+			strong.setText("Instruções:");
+			fileInfoBlock.createEl("br");
+			fileInfoBlock.appendText("Todas as notas no formato .md (Markdown) dentro da pasta informada e suas subpastas serão criptografadas.");
+			fileInfoBlock.createEl("br");
+			const warn = fileInfoBlock.createSpan();
+			warn.addClass("warning-block-text");
+			warn.setText("Arquivos de outros formatos não serão criptografados.");
+		} else {
+			fileInfoBlock.setText(translation.fileInfoBlock.replace(/<[^>]+>/g, ""));
+		}
 
 		new Setting(containerEl)
 			.setName(translation.folderPath)
@@ -96,14 +99,22 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		const lineBlock = document.createElement("hr");
+		const lineBlock = containerEl.createEl("hr");
 		lineBlock.style.marginBottom = "1em";
-		containerEl.appendChild(lineBlock);
 
-		const infoBlock = document.createElement("div");
+		// Info block (com formatação)
+		const infoBlock = containerEl.createDiv({ cls: "file-info-block" });
 		infoBlock.style.marginBottom = "1em";
-		infoBlock.innerHTML = translation.infoBlock;
-		containerEl.appendChild(infoBlock);
+		if (translation.infoBlock.includes("<h2>")) {
+			// Exemplo: <h2>Backup manual da senha por email (Opcional)</h2>O plugin utiliza ...<span style='color: #e09000'>Nunca compartilhe sua senha com terceiros.</span>
+			infoBlock.createEl("h2", { text: "Backup manual da senha por email (Opcional)" });
+			infoBlock.appendText("O plugin utiliza o recurso mailto: do seu sistema operacional para abrir o aplicativo de email padrão já com o destinatário, assunto e corpo preenchidos. O plugin tentará abrir seu cliente de email padrão, para confirmação e envio.");
+			infoBlock.createEl("br");
+			const warn = infoBlock.createSpan({ cls: "info-warning-text" });
+			warn.setText("Nunca compartilhe sua senha com terceiros.");
+		} else {
+			infoBlock.setText(translation.infoBlock.replace(/<[^>]+>/g, ""));
+		}
 
 		new Setting(containerEl)
 			.setName(translation.backupEmail)
@@ -134,14 +145,8 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		const footerBlock = document.createElement("div");
-		footerBlock.style.background = "#222";
-		footerBlock.style.color = "#fff";
-		footerBlock.style.textAlign = "center";
-		footerBlock.style.padding = "1.5em 0 1em 0";
-		footerBlock.style.marginTop = "2em";
-		footerBlock.style.borderRadius = "8px";
-		footerBlock.innerHTML = translation.footer;
-		containerEl.appendChild(footerBlock);
+		// Footer block (com formatação)
+		const footerBlock = containerEl.createDiv({ cls: "footer-block" });
+		footerBlock.setText(translation.footer.replace(/<[^>]+>/g, ""));
 	}
 }
