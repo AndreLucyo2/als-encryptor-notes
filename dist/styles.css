@@ -1,4 +1,3 @@
-
 .warning-block {
 	background-color: #fff8c6 !important;
 	border: 1px solid #e0b000 !important;
@@ -27,10 +26,26 @@
 }
 
 .footer-block {
-	background-color: #222;
-	color: #fff;
 	text-align: center;
 	padding: 1.5em 0 1em 0;
 	margin-top: 2em;
 	border-radius: 8px;
+}
+
+.footer-donation-btn-wrapper {
+	margin-top: 0.7em;
+}
+
+.footer-donation-btn img {
+	width: 160px;
+	height: 44px;
+	max-width: 100%;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	transition: transform 0.1s;
+}
+
+.footer-donation-btn img:hover {
+	transform: scale(1.05);
 }

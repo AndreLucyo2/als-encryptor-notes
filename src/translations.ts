@@ -30,7 +30,15 @@ export type EncryptedFolderTranslation = {
 	backupNotice: string;
 	backupNoticeError: string;
 	infoBlock: string;
-	footer: string;
+	footerThankYou: string;
+	footerDevelopedBy: string;
+	footerDevName: string;
+	footerDevLink: string;
+	footerSupport: string;
+	footerDonationLink: string;
+	footerDonationImg: string;
+	footerDonationAlt: string;
+	footerShare: string;
 	pluginLoaded: string;
 	encryptMenu: string;
 	decryptMenu: string;
@@ -66,7 +74,15 @@ export const translations: Record<string, EncryptedFolderTranslation> = {
 		backupNotice: "Email client opened for backup.",
 		backupNoticeError: "Fill in the backup email and password first.",
 		infoBlock: "Manual password backup by email (Optional). The plugin uses the mailto: feature of your operating system to open the default email app with recipient, subject, and body filled. The plugin will try to open your default email client for confirmation and sending. Never share your password with others.",
-		footer: "Thank you for using Encryptor Secure Notes! Developed by AndreLucyo2. If you want to support development, consider a donation at Ko-fi. If you like this plugin, share it with other Obsidian users.",
+		footerThankYou: "Thank you for using",
+		footerDevelopedBy: "Developed by",
+		footerDevName: "AndreLucyo2",
+		footerDevLink: "https://github.com/AndreLucyo2",
+		footerSupport: "If you want to support development, consider a donation:",
+		footerDonationLink: "https://ko-fi.com/andrelucyo",
+		footerDonationImg: "https://cdn.ko-fi.com/cdn/kofi2.png?v=3",
+		footerDonationAlt: "Support me on Ko-fi",
+		footerShare: "If you like this plugin, share it with other Obsidian users!",
 		pluginLoaded: "Plugin Encryptor Secure Notes loaded!",
 		encryptMenu: "Encrypt folder",
 		decryptMenu: "Decrypt folder",
@@ -100,7 +116,15 @@ export const translations: Record<string, EncryptedFolderTranslation> = {
 		backupNotice: "Cliente de email aberto para envio do backup.",
 		backupNoticeError: "Preencha o email de backup e a senha antes.",
 		infoBlock: "Backup manual da senha por email (Opcional). O plugin utiliza o recurso mailto: do seu sistema operacional para abrir o aplicativo de email padrão já com o destinatário, assunto e corpo preenchidos. O plugin tentará abrir seu cliente de email padrão, para confirmação e envio. Nunca compartilhe sua senha com terceiros.",
-		footer: "Obrigado por usar o Encryptor Secure Notes! Desenvolvido por AndreLucyo2. Se quiser apoiar o desenvolvimento, considere uma doação no Ko-fi. Se você gosta deste plugin, compartilhe com outros usuários do Obsidian!.",
+		footerThankYou: "Obrigado por usar",
+		footerDevelopedBy: "Desenvolvido por",
+		footerDevName: "AndreLucyo2",
+		footerDevLink: "https://github.com/AndreLucyo2",
+		footerSupport: "Se quiser apoiar o desenvolvimento, considere uma doação:",
+		footerDonationLink: "https://ko-fi.com/andrelucyo",
+		footerDonationImg: "https://cdn.ko-fi.com/cdn/kofi2.png?v=3",
+		footerDonationAlt: "Support me on Ko-fi",
+		footerShare: "Se você gosta deste plugin, compartilhe com outros usuários do Obsidian!",
 		pluginLoaded: "Plugin Encrypted Folder carregado!",
 		encryptMenu: "Criptografar pasta",
 		decryptMenu: "Descriptografar pasta",
@@ -134,7 +158,15 @@ export const translations: Record<string, EncryptedFolderTranslation> = {
 		backupNotice: "Cliente de correo abierto para el respaldo.",
 		backupNoticeError: "Completa el correo de respaldo y la contraseña primero.",
 		infoBlock: "Respaldo manual de la contraseña por correo (Opcional). El plugin utiliza la función mailto: de tu sistema operativo para abrir la aplicación de correo predeterminada con destinatario, asunto y cuerpo rellenados. El plugin intentará abrir tu cliente de correo predeterminado para confirmación y envío. Nunca compartas tu contraseña con otros.",
-		footer: "¡Gracias por usar Encryptor Secure Notes! Desarrollado por AndreLucyo2. Si quieres apoyar el desarrollo, considera una donación en Ko-fi. Si te gusta este plugin, compártelo con otros usuarios de Obsidian!.",
+		footerThankYou: "¡Gracias por usar",
+		footerDevelopedBy: "Desarrollado por",
+		footerDevName: "AndreLucyo2",
+		footerDevLink: "https://github.com/AndreLucyo2",
+		footerSupport: "Si quieres apoyar el desarrollo, considera una donación:",
+		footerDonationLink: "https://ko-fi.com/andrelucyo",
+		footerDonationImg: "https://cdn.ko-fi.com/cdn/kofi2.png?v=3",
+		footerDonationAlt: "Support me on Ko-fi",
+		footerShare: "¡Si te gusta este plugin, compártelo con otros usuarios de Obsidian!",
 		pluginLoaded: "¡Plugin Encrypted Folder cargado!",
 		encryptMenu: "Cifrar carpeta",
 		decryptMenu: "Descifrar carpeta",

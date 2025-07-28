@@ -83,8 +83,7 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		const lineBlock = containerEl.createEl("hr");
-		lineBlock.style.marginBottom = "1em";
+		containerEl.createEl("hr");
 
 		// Info block
 		const infoBlock = containerEl.createDiv({ cls: "file-info-block" });
@@ -120,8 +119,39 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
+		containerEl.createEl("hr");
+
 		// Footer block
 		const footerBlock = containerEl.createDiv({ cls: "footer-block" });
-		footerBlock.setText(translation.footer);
+
+		// Main thank you text
+		const thankText = footerBlock.createDiv({ cls: "footer-main-text" });
+		thankText.setText(translation.footerThankYou);
+		const pluginName = thankText.createSpan({ cls: "footer-plugin-name" });
+		pluginName.setText(" Encryptor Secure Notes!");
+
+		// Developer line
+		const devLine = footerBlock.createDiv({ cls: "footer-dev-line" });
+		devLine.setText(translation.footerDevelopedBy + " ");
+		const devLink = devLine.createEl("a", { text: translation.footerDevName, href: translation.footerDevLink });
+		devLink.setAttr("target", "_blank");
+
+		// Donation line
+		const donationLine = footerBlock.createDiv({ cls: "footer-donation-line" });
+		donationLine.setText(translation.footerSupport);
+		// Button on new line
+		const donationBtnWrapper = donationLine.createDiv({ cls: "footer-donation-btn-wrapper" });
+		const donationBtn = donationBtnWrapper.createEl("a", { cls: "footer-donation-btn", href: translation.footerDonationLink });
+		donationBtn.setAttr("target", "_blank");
+		donationBtn.createEl("img", {
+			attr: {
+				src: translation.footerDonationImg,
+				alt: translation.footerDonationAlt
+			}
+		});
+
+		// Share message
+		const shareMsg = footerBlock.createDiv({ cls: "footer-share-msg" });
+		shareMsg.createEl("em", { text: translation.footerShare });
 	}
 }
