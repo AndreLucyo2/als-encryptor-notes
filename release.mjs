@@ -4,16 +4,17 @@ import fs from 'fs';
 const version = process.argv[2];
 
 if (!version) {
-	console.error('❌ Versão não especificada. Use: npm run buildRelease -- v1.0.0');
+	console.error('❌ Versão não especificada. Use: npm run buildRelease -- 1.0.0');
 	process.exit(1);
 }
 
-const filesToUpload = ['main.js', 'manifest.json'];
+const filesToUpload = ['main.js', 'manifest.json', 'styles.css'];
 
-// Verifica se os arquivos existem
+// Verifica se os arquivos existem na pasta dist
 for (const file of filesToUpload) {
-	if (!fs.existsSync(file)) {
-		console.error(`❌ Arquivo não encontrado: ${file}`);
+	const filePath = `dist/${file}`;
+	if (!fs.existsSync(filePath)) {
+		console.error(`❌ Arquivo não encontrado: ${filePath}`);
 		process.exit(1);
 	}
 }
@@ -26,8 +27,11 @@ try {
 	execSync(`git tag ${version}`);
 	execSync(`git push origin ${version}`);
 
+	// Monta os caminhos completos dos arquivos para upload
+	const filesWithPath = filesToUpload.map(f => `dist/${f}`).join(' ');
+
 	console.log('📦 Criando release no GitHub com os arquivos compilados...');
-	execSync(`gh release create ${version} ${filesToUpload.join(' ')} --title "${version}" --notes "Release automática com artefatos compilados."`);
+	execSync(`gh release create ${version} ${filesWithPath} --title "${version}" --notes "Release automática com artefatos compilados."`);
 
 	console.log('✅ Release criada com sucesso!');
 } catch (error) {

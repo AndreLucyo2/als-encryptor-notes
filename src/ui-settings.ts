@@ -29,29 +29,16 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 
 		containerEl.createEl("h1", { text: translation.title });
 
-		// Bloco de alerta para o usuário
-		const warningBlock = document.createElement("div");
-		warningBlock.style.background = "#fff8c6";
-		warningBlock.style.border = "1px solid #e0b000";
-		warningBlock.style.padding = "1em";
-		warningBlock.style.marginBottom = "1em";
-		warningBlock.style.borderRadius = "6px";
-		warningBlock.innerHTML = `<span style='color:#c00000; font-weight:bold;'>${translation.attention}</span><br><span style='color:#c00000;'>${translation.warningBlock}</span>`;
-		containerEl.appendChild(warningBlock);
+		// Bloco de alerta para o usuário (fundo amarelo claro)
+		const warningBlock = containerEl.createDiv({ cls: "warning-block" });
+		warningBlock.setText(`${translation.attention} ${translation.warningBlock}`);
 
 		containerEl.createEl("h1", { text: translation.configTitle });
 		containerEl.createEl("p", { text: translation.configDesc });
 
 		// Bloco de instruções sobre criptografia de arquivos
-		const fileInfoBlock = document.createElement("div");
-		fileInfoBlock.style.background = "#f7f7e0";
-		fileInfoBlock.style.color = "#a08000";
-		fileInfoBlock.style.padding = "0.7em";
-		fileInfoBlock.style.margin = "0.5em 0 1em 0";
-		fileInfoBlock.style.borderRadius = "6px";
-		fileInfoBlock.style.fontSize = "0.98em";
-		fileInfoBlock.innerHTML = translation.fileInfoBlock;
-		containerEl.appendChild(fileInfoBlock);
+		const fileInfoBlock = containerEl.createDiv({ cls: "file-info-block" });
+		fileInfoBlock.setText(translation.fileInfoBlock);
 
 		new Setting(containerEl)
 			.setName(translation.folderPath)
@@ -96,14 +83,12 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		const lineBlock = document.createElement("hr");
-		lineBlock.style.marginBottom = "1em";
-		containerEl.appendChild(lineBlock);
+		containerEl.createEl("hr");
 
-		const infoBlock = document.createElement("div");
+		// Info block
+		const infoBlock = containerEl.createDiv({ cls: "file-info-block" });
 		infoBlock.style.marginBottom = "1em";
-		infoBlock.innerHTML = translation.infoBlock;
-		containerEl.appendChild(infoBlock);
+		infoBlock.setText(translation.infoBlock);
 
 		new Setting(containerEl)
 			.setName(translation.backupEmail)
@@ -134,14 +119,39 @@ export class EncryptedFolderSettingTab extends PluginSettingTab {
 				})
 			);
 
-		const footerBlock = document.createElement("div");
-		footerBlock.style.background = "#222";
-		footerBlock.style.color = "#fff";
-		footerBlock.style.textAlign = "center";
-		footerBlock.style.padding = "1.5em 0 1em 0";
-		footerBlock.style.marginTop = "2em";
-		footerBlock.style.borderRadius = "8px";
-		footerBlock.innerHTML = translation.footer;
-		containerEl.appendChild(footerBlock);
+		containerEl.createEl("hr");
+
+		// Footer block
+		const footerBlock = containerEl.createDiv({ cls: "footer-block" });
+
+		// Main thank you text
+		const thankText = footerBlock.createDiv({ cls: "footer-main-text" });
+		thankText.setText(translation.footerThankYou);
+		const pluginName = thankText.createSpan({ cls: "footer-plugin-name" });
+		pluginName.setText(" Encryptor Secure Notes!");
+
+		// Developer line
+		const devLine = footerBlock.createDiv({ cls: "footer-dev-line" });
+		devLine.setText(translation.footerDevelopedBy + " ");
+		const devLink = devLine.createEl("a", { text: translation.footerDevName, href: translation.footerDevLink });
+		devLink.setAttr("target", "_blank");
+
+		// Donation line
+		const donationLine = footerBlock.createDiv({ cls: "footer-donation-line" });
+		donationLine.setText(translation.footerSupport);
+		// Button on new line
+		const donationBtnWrapper = donationLine.createDiv({ cls: "footer-donation-btn-wrapper" });
+		const donationBtn = donationBtnWrapper.createEl("a", { cls: "footer-donation-btn", href: translation.footerDonationLink });
+		donationBtn.setAttr("target", "_blank");
+		donationBtn.createEl("img", {
+			attr: {
+				src: translation.footerDonationImg,
+				alt: translation.footerDonationAlt
+			}
+		});
+
+		// Share message
+		const shareMsg = footerBlock.createDiv({ cls: "footer-share-msg" });
+		shareMsg.createEl("em", { text: translation.footerShare });
 	}
 }
